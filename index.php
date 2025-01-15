@@ -1,0 +1,117 @@
+<?php 
+session_start();
+if (!$_SESSION['login']) {
+    header("Location: login.php");
+    exit;
+}
+
+?>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <title>Invoice</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="mb-5 text-center">Invoice Percetakan Gratis</h2>
+      <form id="invoiceForm">
+        <div class="row mt-5 mb-5">
+          <div class="form-group col-md-6">
+            <label for="customerName">Nama Customer :</label>
+            <input type="text" class="form-control mt-1" id="customerName" placeholder="Enter Customer Name" required />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="NoPO">No PO :</label>
+            <input type="text" class="form-control mt-1" id="NoPO" placeholder="Enter Nomor PO" required />
+          </div>
+          <div class="form-group col-md-6 mt-2">
+            <label for="invoiceDate">Tanggal :</label>
+            <input type="text" class="form-control mt-1" id="invoiceDate" disabled readonly />
+          </div>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Nama Barang</th>
+              <th scope="col">Jumlah</th>
+              <th scope="col">Harga Satuan</th>
+              <th scope="col">Total</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody id="invoiceItems"></tbody>
+        </table>
+        <button type="button" class="btn btn-primary" id="btntambah" onclick="showAddItemForm()">Tambah</button>
+
+        <div id="addItemForm" style="display: none; margin-top: 20px">
+          <div class="form-group">
+            <label for="itemCode">Kode Barang:</label>
+            <input type="text" class="form-control mt-2" id="itemCode" placeholder="Masukkan Kode Barang" />
+          </div>
+          <button type="button" class="btn btn-success mt-2" onclick="fetchItemDetails()">Tambah Barang</button>
+        </div>
+
+        <div class="form-group col-md-6 mt-2">
+          <label for="totalAmount">Total Harga :</label>
+          <input type="text" class="form-control" id="totalAmount" disable readonly />
+        </div>
+      </form>
+      <div class="btn-print">
+        <button class="btn btn-danger btn-print mt-4" onclick="printNota()">Print Nota</button>
+        <button class="btn btn-danger btn-print mt-4" onclick="printTandaTerima()">Print Tanda Terima</button>
+        <button class="btn btn-success btn-print mt-4" onclick="downloadInvoice()">Download</button>
+
+        <!-- Tambahkan html2canvas library -->
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+      </div>
+    </div>
+
+    <div class="btnSC-cntnr">
+      <p class="btnShowChat" onclick="showChat()">CHAT</p>
+    </div>
+    <div class="chat-container" style="display: none">
+      <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+          <h3>Bot Percetakan Firdaus</h3>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+          <div class="message bot">Halo! Selamat datang, ada yang bisa mimin bantu ?</div>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="userInput" placeholder="Ketik pesan Anda di sini..." />
+          <button onclick="sendMessage()">Kirim</button>
+        </div>
+      </div>
+      <div class="btnCls-cntnr">
+        <p class="btnCloseChat" onclick="closeChat()">CLOSE</p>
+      </div>
+    </div>
+
+    <script src="chat.js"></script>
+
+    <!-- Scripts -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js"
+      integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj+KsslFkCOt3TvJrX2AV/Gc3wOqA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="invoice.js"></script>
+  </body>
+</html>
