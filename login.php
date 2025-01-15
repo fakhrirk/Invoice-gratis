@@ -24,9 +24,7 @@ if (isset($_POST["submit"])) {
 </head>
 <body>
 
-    <?php if (isset($error)) : ?>
-        <p style="color: red;">Username atau Password salah</p>
-        <?php endif?>
+
 
 
     <div class="login-container">
@@ -34,7 +32,7 @@ if (isset($_POST["submit"])) {
             <h2>Log in (Gratis)</h2>
             <form action="login.php" method="POST">
                 <div class="input-group">
-                    <input type="text" name="username" placeholder="User ID" required>
+                    <input type="text" name="username" placeholder="User Name" required>
                     <span class="icon">👤</span>
                 </div>
                 <div class="input-group">
@@ -45,6 +43,9 @@ if (isset($_POST["submit"])) {
                 <a target="_blank" href="https://api.whatsapp.com/send?phone=6285656563250" class="forgot-password">Forgot Password?</a>
             </form>
         </div>
+        <?php if (isset($error)) : ?>
+        <p style="color: red; margin-top: 20px;">Username atau Password salah</p>
+        <?php endif?>
     </div>
 
     <script>
