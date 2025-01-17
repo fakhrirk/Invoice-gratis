@@ -254,7 +254,7 @@ function printNota() {
     </head>
 
     <body>
-        <h1 style="color: #304d30; font-family: 'BatmanForeverAlternate', sans-serif; ">GRATIS</h1>
+    <p style="color: #2c2c2c; font-family: Arial, sans-serif; font-size: 15px; font-weight: bold;">Pusat Souvenir & Percetakan<br /><span style="color: #304d30; font-family: 'BatmanForeverAlternate', sans-serif; font-size: 50px">Gratis</span></p>
         <p class="name" ><strong>Nama Customer : </strong>${customerName}</p>
         <p><strong>Nomor PO : </strong>${NoPO}</p>
         <p><strong>Tanggal : </strong>${invoiceDate}</p>
@@ -319,6 +319,7 @@ function printTandaTerima() {
   <html>
     <head>
         <title>Tanda Terima</title>
+        <link href="https://fonts.cdnfonts.com/css/batman-forever" rel="stylesheet">
         <style>
             body{
                 font-family: Arial, sans-serif;
@@ -348,7 +349,7 @@ function printTandaTerima() {
     </head>
 
     <body>
-        <h1 style="color: #304d30;">PERCETAKAN GRATIS</h1>
+        <p style="color: #2c2c2c; font-family: Arial, sans-serif; font-size: 15px; font-weight: bold;">Pusat Souvenir & Percetakan<br /><span style="color: #304d30; font-family: 'BatmanForeverAlternate', sans-serif; font-size: 50px">Gratis</span></p>
         <p class="name"><strong>Nama Customer : </strong>${customerName}</p>
         <p><strong>Nomor PO : </strong>${NoPO}</p>
         <p><strong>Tanggal : </strong>${invoiceDate}</p>
