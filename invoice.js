@@ -219,6 +219,7 @@ function printNota() {
   <html>
     <head>
         <title>Nota</title>
+        <link href="https://fonts.cdnfonts.com/css/batman-forever" rel="stylesheet">
         <style>
             body{
                 font-family: Arial, sans-serif;
@@ -253,7 +254,7 @@ function printNota() {
     </head>
 
     <body>
-        <h1 style="color: #304d30;">PERCETAKAN GRATIS</h1>
+        <h1 style="color: #304d30; font-family: 'BatmanForeverAlternate', sans-serif; ">GRATIS</h1>
         <p class="name" ><strong>Nama Customer : </strong>${customerName}</p>
         <p><strong>Nomor PO : </strong>${NoPO}</p>
         <p><strong>Tanggal : </strong>${invoiceDate}</p>
