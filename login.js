@@ -8,6 +8,11 @@ function validateForm(event) {
   const validUsername = "admin";
   const validPassword = "123321";
 
+  if (/[<>"'`]/g.test(username) || /[<>"'`]/g.test(password)) {
+    alert("Karakter khusus tidak diizinkan");
+    return false;
+  }
+
   if (username === validUsername && password === validPassword) {
     sessionStorage.setItem("isLoggedIn", "true");
     alert("Login berhasil!");
